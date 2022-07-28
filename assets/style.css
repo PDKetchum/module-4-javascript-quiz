@@ -12,9 +12,47 @@
 body {
   background-color: var(--neutral);
   color: var(--dark);
+  border: var(--border);
+  background-color: var(--light);
 }
 
 .quiz-container {
-  border: var(--border);
-  background-color: var(--light);
+  padding: 20px;
+  max-width: 80%;
+}
+
+li {
+  list-style: none;
+}
+
+ul li {
+  margin: 10 px;
+}
+
+button {
+  font-size: 20px;
+  padding: 15px;
+  cursor: pointer;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+}
+.timer {
+  padding: 20px;
+}
+
+.score {
+  padding: 20px;
+}
+
+.incorrect {
+  background-color: var(--inccorect);
+}
+
+.correct {
+  background-color: var(--correct);
 }

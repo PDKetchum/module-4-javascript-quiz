@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/assets/style.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
     <title>JavaScript Quiz</title>
   </head>
   <body>
@@ -14,17 +14,32 @@
       </div>
       <div class="choices">
         <ul>
-          <li>Choice 1</li>
-          <li>Choice 2</li>
-          <li>Choice 3</li>
-          <li>Choice 4</li>
+          <li>
+            <input type="radio" name="choice" id="1" class="choice" />Choice 1
+          </li>
+          <li>
+            <input type="radio" name="choice" id="2" class="choice" />Choice 2
+          </li>
+          <li>
+            <input type="radio" name="choice" id="3" class="choice" />Choice 3
+          </li>
+          <li>
+            <input type="radio" name="choice" id="4" class="choice" />Choice 4
+          </li>
         </ul>
       </div>
     </div>
+    <div class="timer" id="" timer>
+      <h3>Time left:</h3>
+      <p></p>
+    </div>
+    <div class="score" id="score">
+      <h3>Score:</h3>
+    </div>
     <div class="buttons">
-      <button id="start-button" class="start-button button">Start</button>
-      <button id="submit-button" class="submit-buton button">Submit</button>
+      <button id="start-button hide" class="start-button button">Start</button>
+      <h3 id="hide">Click start to begin</h3>
     </div>
   </body>
-  <script src="/assets/script.js"></script>
+  <script src="./assets/script.js"></script>
 </html>
