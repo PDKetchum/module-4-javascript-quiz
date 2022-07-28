@@ -21,8 +21,13 @@ body {
   max-width: 80%;
 }
 
+.questions {
+  padding: 15px;
+}
+
 li {
   list-style: none;
+  padding: 10px;
 }
 
 ul li {
@@ -40,6 +45,7 @@ button {
   justify-content: center;
   align-items: center;
   padding: 40px;
+  flex-direction: column;
 }
 .timer {
   padding: 20px;
