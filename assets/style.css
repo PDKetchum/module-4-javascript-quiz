@@ -1,0 +1,20 @@
+:root {
+  --light: #dcd1de;
+  --medium: #a07fa5;
+  --dark: #4d1f54;
+  --neutral: #bea9c2;
+  --border: solid var(--dark) 8px;
+  --correct: #c3e19d;
+  --inccorect: #e19d9d;
+  font-family: "Courier New", Courier, monospace;
+}
+
+body {
+  background-color: var(--neutral);
+  color: var(--dark);
+}
+
+.quiz-container {
+  border: var(--border);
+  background-color: var(--light);
+}
