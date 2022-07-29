@@ -22,7 +22,7 @@ var listOfQuestions = [
     b: "string",
     c: "word",
     d: "boolean",
-    correctAnswer: c,
+    correctAnswer: "word",
   },
   {
     question: "What is the use of isNaN function?",
@@ -100,6 +100,7 @@ var listOfQuestions = [
 ];
 
 var startButton = document.getElementById("start-button");
+var submitButton = document.getElementById("submit-button");
 var quizContainer = document.getElementById("quiz-container");
 var quizContents = document.querySelectorAll(".appear");
 var startingContents = document.querySelectorAll(".hide");
@@ -109,6 +110,10 @@ var choiceAPlaceHolder = document.getElementById("a-text-holder");
 var choiceBPlaceHolder = document.getElementById("b-text-holder");
 var choiceCPlaceHolder = document.getElementById("c-text-holder");
 var choiceDPlaceHolder = document.getElementById("d-text-holder");
+var selectionA = document.getElementById("a");
+var selectionB = document.getElementById("b");
+var selectionC = document.getElementById("c");
+var selectionD = document.getElementById("d");
 var timer;
 var timerCount;
 
@@ -144,11 +149,46 @@ function startTimer() {
   }, 1000);
 }
 
-function loadQuestions() {
-  var currentQuestion = listOfQuestions[0];
+function loadQuestions(number) {
+  var currentQuestion = listOfQuestions[number];
   questionPlaceHolder.textContent = currentQuestion.question;
   choiceAPlaceHolder.textContent = currentQuestion.a;
   choiceBPlaceHolder.textContent = currentQuestion.b;
   choiceCPlaceHolder.textContent = currentQuestion.c;
   choiceDPlaceHolder.textContent = currentQuestion.d;
 }
+
+submitButton.addEventListener("click", submitAnswer);
+
+function submitAnswer() {
+  var currentQuestion = listOfQuestions[0];
+  if (selectionA.checked) {
+    if (currentQuestion.a === currentQuestion.correctAnswer) {
+      // to do: move to next question function
+    } else {
+      timerCount -= 10;
+    }
+  } else if (selectionB.checked) {
+    if (currentQuestion.b === currentQuestion.correctAnswer) {
+      // to do: move to next question function
+    } else {
+      timerCount -= 10;
+    }
+  } else if (selectionC.checked) {
+    if (currentQuestion.c === currentQuestion.correctAnswer) {
+      // to do: move to next question function
+    } else {
+      timerCount -= 10;
+    }
+  } else {
+    if (currentQuestion.d === currentQuestion.correctAnswer) {
+      // to do: move to next question function
+    } else {
+      timerCount -= 10;
+    }
+  }
+}
+
+ function clearSelectedAnswer {
+  
+ }
