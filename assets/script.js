@@ -103,6 +103,7 @@ var startButton = document.getElementById("start-button");
 var quizContainer = document.getElementById("quiz-container");
 var quizContents = document.querySelectorAll(".appear");
 var startingContents = document.querySelectorAll(".hide");
+var timerPlaceHolder = document.getElementById("timeLeft");
 var timer;
 var timerCount;
 
@@ -111,6 +112,8 @@ startButton.addEventListener("click", startQuiz);
 function startQuiz() {
   displayQuizContents();
   hideStartingContents();
+  timerCount = 100;
+  startTimer();
 }
 
 function displayQuizContents() {
@@ -123,4 +126,14 @@ function hideStartingContents() {
   for (var i = 0; i < startingContents.length; i++) {
     startingContents[i].style.display = "none";
   }
+}
+
+function startTimer() {
+  timer = setInterval(function () {
+    timerCount--;
+    timerPlaceHolder.textContent = timerCount + " seconds left";
+    if (timerCount === 0) {
+      clearInterval(timer);
+    }
+  }, 1000);
 }
