@@ -19,9 +19,10 @@ body {
 .quiz-container {
   padding: 20px;
   max-width: 80%;
+  display: none;
 }
 
-.questions {
+.question {
   padding: 15px;
 }
 
@@ -49,10 +50,7 @@ button {
 }
 .timer {
   padding: 20px;
-}
-
-.score {
-  padding: 20px;
+  display: none;
 }
 
 .incorrect {
