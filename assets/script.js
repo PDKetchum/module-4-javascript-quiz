@@ -104,6 +104,11 @@ var quizContainer = document.getElementById("quiz-container");
 var quizContents = document.querySelectorAll(".appear");
 var startingContents = document.querySelectorAll(".hide");
 var timerPlaceHolder = document.getElementById("timeLeft");
+var questionPlaceHolder = document.getElementById("question");
+var choiceAPlaceHolder = document.getElementById("a-text-holder");
+var choiceBPlaceHolder = document.getElementById("b-text-holder");
+var choiceCPlaceHolder = document.getElementById("c-text-holder");
+var choiceDPlaceHolder = document.getElementById("d-text-holder");
 var timer;
 var timerCount;
 
@@ -114,6 +119,7 @@ function startQuiz() {
   hideStartingContents();
   timerCount = 100;
   startTimer();
+  loadQuestions();
 }
 
 function displayQuizContents() {
@@ -136,4 +142,13 @@ function startTimer() {
       clearInterval(timer);
     }
   }, 1000);
+}
+
+function loadQuestions() {
+  var currentQuestion = listOfQuestions[0];
+  questionPlaceHolder.textContent = currentQuestion.question;
+  choiceAPlaceHolder.textContent = currentQuestion.a;
+  choiceBPlaceHolder.textContent = currentQuestion.b;
+  choiceCPlaceHolder.textContent = currentQuestion.c;
+  choiceDPlaceHolder.textContent = currentQuestion.d;
 }
