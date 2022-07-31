@@ -30,7 +30,8 @@ var listOfQuestions = [
     b: "returns true if the argument is not a number; otherwise, it is false.",
     c: "a programming language",
     d: "allows the user to enter input by providing a text box",
-    correctAnswer: b,
+    correctAnswer:
+      "returns true if the argument is not a number; otherwise, it is false.",
   },
   {
     question: "Which symbol is used for comments in Javascript?",
@@ -38,7 +39,7 @@ var listOfQuestions = [
     b: "()",
     c: "||",
     d: "$$",
-    correctAnswer: a,
+    correctAnswer: "//",
   },
   {
     question: "Which is not a Pop up box availible in Javascript?",
@@ -46,7 +47,7 @@ var listOfQuestions = [
     b: "confirm",
     c: "prompt",
     d: "warning",
-    correctAnswer: d,
+    correctAnswer: "warning",
   },
   {
     question: "What does DOM stand for?",
@@ -54,7 +55,7 @@ var listOfQuestions = [
     b: "Desktop Open Model",
     c: "Document Overview Model",
     d: "Desktop Overview Model",
-    correctAnswer: a,
+    correctAnswer: "Document Object Model",
   },
   {
     question: "Which of the following is considered a boolean",
@@ -62,7 +63,7 @@ var listOfQuestions = [
     b: 'Myvariable = "dog"',
     c: "Myvariable = 234",
     d: 'Myvariable = "Good Morning"',
-    correctAnswer: a,
+    correctAnswer: "Myvariable = false",
   },
   {
     question:
@@ -71,7 +72,7 @@ var listOfQuestions = [
     b: "global",
     c: "local",
     d: "prompt",
-    correctAnswer: b,
+    correctAnswer: "global",
   },
   {
     question: "How do you replace a string content?",
@@ -79,7 +80,7 @@ var listOfQuestions = [
     b: ".pop",
     c: ".replace",
     d: ".length",
-    correctAnswer: c,
+    correctAnswer: ".replace",
   },
   {
     question: "Which is not a HTML event function?",
@@ -87,7 +88,7 @@ var listOfQuestions = [
     b: "onmouseover",
     c: "onkeydown",
     d: "onclick",
-    correctAnswer: a,
+    correctAnswer: "ontry",
   },
   {
     question: "Which of the following is a JavaScript Array Method",
@@ -95,10 +96,11 @@ var listOfQuestions = [
     b: "pop method",
     c: "candy method",
     d: "fruit method",
-    correctAnswer: b,
+    correctAnswer: "pop method",
   },
 ];
 
+// Variables listed out
 var startButton = document.getElementById("start-button");
 var submitButton = document.getElementById("submit-button");
 var quizContainer = document.getElementById("quiz-container");
@@ -116,15 +118,18 @@ var selectionC = document.getElementById("c");
 var selectionD = document.getElementById("d");
 var timer;
 var timerCount;
+var questionNumber = 0;
 
+// Event listener for start button
 startButton.addEventListener("click", startQuiz);
 
+//
 function startQuiz() {
   displayQuizContents();
   hideStartingContents();
   timerCount = 100;
   startTimer();
-  loadQuestions();
+  loadQuestions(questionNumber);
 }
 
 function displayQuizContents() {
@@ -143,14 +148,14 @@ function startTimer() {
   timer = setInterval(function () {
     timerCount--;
     timerPlaceHolder.textContent = timerCount + " seconds left";
-    if (timerCount === 0) {
+    if (timerCount <= 0) {
       clearInterval(timer);
     }
   }, 1000);
 }
 
-function loadQuestions(number) {
-  var currentQuestion = listOfQuestions[number];
+function loadQuestions() {
+  var currentQuestion = listOfQuestions[questionNumber];
   questionPlaceHolder.textContent = currentQuestion.question;
   choiceAPlaceHolder.textContent = currentQuestion.a;
   choiceBPlaceHolder.textContent = currentQuestion.b;
@@ -161,34 +166,49 @@ function loadQuestions(number) {
 submitButton.addEventListener("click", submitAnswer);
 
 function submitAnswer() {
-  var currentQuestion = listOfQuestions[0];
-  if (selectionA.checked) {
-    if (currentQuestion.a === currentQuestion.correctAnswer) {
-      // to do: move to next question function
-    } else {
-      timerCount -= 10;
-    }
-  } else if (selectionB.checked) {
-    if (currentQuestion.b === currentQuestion.correctAnswer) {
-      // to do: move to next question function
-    } else {
-      timerCount -= 10;
-    }
-  } else if (selectionC.checked) {
-    if (currentQuestion.c === currentQuestion.correctAnswer) {
-      // to do: move to next question function
-    } else {
-      timerCount -= 10;
-    }
-  } else {
-    if (currentQuestion.d === currentQuestion.correctAnswer) {
-      // to do: move to next question function
-    } else {
-      timerCount -= 10;
-    }
+  var currentQuestion = listOfQuestions[questionNumber];
+  if (
+    selectionA.checked &&
+    currentQuestion.a !== currentQuestion.correctAnswer
+  ) {
+    console.log(selectionA.checked);
+    console.log(currentQuestion.correctAnswer);
+    console.log(currentQuestion.a);
+    timerCount -= 10;
+  } else if (
+    selectionB.checked &&
+    currentQuestion.b !== currentQuestion.correctAnswer
+  ) {
+    console.log(selectionB.checked);
+    console.log(currentQuestion.correctAnswer);
+    console.log(currentQuestion.b);
+    timerCount -= 10;
+  } else if (
+    selectionC.checked &&
+    currentQuestion.c !== currentQuestion.correctAnswer
+  ) {
+    console.log(selectionC.checked);
+    console.log(currentQuestion.correctAnswer);
+    console.log(currentQuestion.c);
+    timerCount -= 10;
+  } else if (
+    selectionD.checked &&
+    currentQuestion.d !== currentQuestion.correctAnswer
+  ) {
+    console.log(selectionD.checked);
+    console.log(currentQuestion.correctAnswer);
+    console.log(currentQuestion.d);
+    timerCount -= 10;
   }
+  loadQuestions(questionNumber++);
+  clearSelectedAnswer();
 }
 
- function clearSelectedAnswer {
-  
- }
+function clearSelectedAnswer() {
+  selectionA.checked = false;
+  selectionB.checked = false;
+  selectionC.checked = false;
+  selectionD.checked = false;
+}
+
+function loadScorePage() {}
