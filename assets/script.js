@@ -103,10 +103,14 @@ var listOfQuestions = [
 // Variables listed out
 var startButton = document.getElementById("start-button");
 var submitButton = document.getElementById("submit-button");
+var saveButton = document.getElementById("save-button");
 var quizContainer = document.getElementById("quiz-container");
 var quizContents = document.querySelectorAll(".appear");
 var startingContents = document.querySelectorAll(".hide");
 var timerPlaceHolder = document.getElementById("timeLeft");
+var initialsPage = document.querySelectorAll(".initialsPage");
+var userInitials = document.getElementById("userInitials");
+var scorePage = document.getElementById("scorePage");
 var questionPlaceHolder = document.getElementById("question");
 var choiceAPlaceHolder = document.getElementById("a-text-holder");
 var choiceBPlaceHolder = document.getElementById("b-text-holder");
@@ -125,16 +129,17 @@ startButton.addEventListener("click", startQuiz);
 
 //
 function startQuiz() {
-  displayQuizContents();
+  displayQuizContents(true);
   hideStartingContents();
   timerCount = 100;
   startTimer();
   loadQuestions(questionNumber);
 }
 
-function displayQuizContents() {
+function displayQuizContents(boolean) {
+  var display = boolean ? "block" : "none";
   for (var i = 0; i < quizContents.length; i++) {
-    quizContents[i].style.display = "block";
+    quizContents[i].style.display = display;
   }
 }
 
@@ -161,6 +166,7 @@ function loadQuestions() {
   choiceBPlaceHolder.textContent = currentQuestion.b;
   choiceCPlaceHolder.textContent = currentQuestion.c;
   choiceDPlaceHolder.textContent = currentQuestion.d;
+  clearSelectedAnswer();
 }
 
 submitButton.addEventListener("click", submitAnswer);
@@ -199,9 +205,22 @@ function submitAnswer() {
     console.log(currentQuestion.correctAnswer);
     console.log(currentQuestion.d);
     timerCount -= 10;
+  } else if (
+    !selectionA.checked &&
+    !selectionB.checked &&
+    !selectionC.checked &&
+    !selectionD.checked
+  ) {
+    alert("Please select an answer.");
+    return;
   }
-  loadQuestions(questionNumber++);
-  clearSelectedAnswer();
+
+  if (questionNumber === listOfQuestions.length - 1) {
+    clearInterval(timer);
+    loadInitialsPage();
+  } else {
+    loadQuestions(questionNumber++);
+  }
 }
 
 function clearSelectedAnswer() {
@@ -211,4 +230,38 @@ function clearSelectedAnswer() {
   selectionD.checked = false;
 }
 
-function loadScorePage() {}
+function loadInitialsPage() {
+  for (var i = 0; i < initialsPage.length; i++) {
+    initialsPage[i].style.display = "block";
+  }
+  displayQuizContents(false);
+}
+
+function loadScorePage() {
+  scorePage.style.display = "block";
+  for (var i = 0; i < initialsPage.length; i++) {
+    initialsPage[i].style.display = "none";
+  }
+  var scores = JSON.parse(localStorage.getItem("UserScore"));
+  scores.sort((a, b) => {
+    return b.userTime - a.userTime;
+  });
+  for (var i = 0; i < scores.length; i++) {
+    if (i === 5) {
+      return;
+    } else {
+    }
+  }
+}
+
+saveButton.addEventListener("click", saveUserScore);
+
+function saveUserScore() {
+  var userScore = {
+    userInitials: userInitials.value,
+    userTime: timerCount,
+  };
+
+  localStorage.setItem("UserScore", JSON.stringify(userScore));
+  loadScorePage();
+}

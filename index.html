@@ -33,7 +33,15 @@
         </ul>
       </div>
     </div>
-    <div class="scorePage" id="scorePage"></div>
+    <div class="initialsPage" id="initialsPage">
+      <p>Type your initials to save your highest score</p>
+      <label for="initials">Initials:</label>
+      <input type="text" id="userInitials" name="initials" placeholder="Enter Initials"></textarea>
+    </div>
+    <div class="scorePage" id="scorePage">
+      <p>Top highests scores are listed below:</p>
+      <div class="highestScores"></div>
+    </div>
     <div class="timer appear" id="timer">
       <h3>Time left:</h3>
       <p id="timeLeft">100 seconds left</p>
@@ -52,6 +60,9 @@
       </div>
       <div>
         <button id="submit-button" class="button appear">Submit</button>
+      </div>
+      <div>
+        <button id="save-button" class="button initialsPage">Save</button>
       </div>
     </div>
   </body>

@@ -43,6 +43,15 @@ button {
 .appear {
   display: none;
 }
+
+.initialsPage {
+  display: none;
+}
+
+.scorePage {
+  display: none;
+}
+
 .buttons div {
   display: flex;
   justify-content: center;
@@ -52,12 +61,4 @@ button {
 }
 .timer {
   padding: 20px;
-}
-
-.incorrect {
-  background-color: var(--inccorect);
-}
-
-.correct {
-  background-color: var(--correct);
 }
