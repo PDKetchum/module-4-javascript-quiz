@@ -132,7 +132,7 @@ startButton.addEventListener("click", startQuiz);
 
 // Display quiz contents, hide start button, start and set timer count to 100, start questions
 function startQuiz() {
-  timerCount = 20;
+  timerCount = 100;
   questionNumber = 0;
 
   displayQuizContents(true);
@@ -149,7 +149,7 @@ function displayQuizContents(boolean) {
     quizContents[i].style.display = display;
   }
 }
-
+// Display or hides if previous answer was correct
 function ifPreviousAnswerCorrect(boolean) {
   var display = boolean ? "block" : "none";
 
@@ -233,7 +233,7 @@ function submitAnswer() {
     timerCount -= 10;
     isCorrect = false;
   } else if (
-    // Alert if not selections are checked
+    // Alerts if no selections are checked
     !selectionA.checked &&
     !selectionB.checked &&
     !selectionC.checked &&
@@ -242,6 +242,7 @@ function submitAnswer() {
     alert("Please select an answer.");
     return;
   }
+  // Displays correct or incorrect on previous answered question
   answer.textContent = isCorrect ? "Correct" : "Incorrect";
   if (questionNumber === listOfQuestions.length - 1 || timerCount < 0) {
     clearInterval(timer);
@@ -288,6 +289,7 @@ function loadScorePage() {
     if (i === 5) {
       return;
     } else {
+      // Create an li element on HTML for user's initials and scores limit 5
       var listItem = document.createElement("li");
       listItem.textContent =
         "User: " + scores[i].userInitials + ", Time: " + scores[i].userTime;
