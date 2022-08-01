@@ -55,6 +55,10 @@ button {
   display: none;
 }
 
+.answerChecked {
+  display: none;
+}
+
 .buttons div {
   display: flex;
   justify-content: center;

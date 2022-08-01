@@ -111,6 +111,8 @@ var timerPlaceHolder = document.getElementById("timeLeft");
 var initialsPage = document.querySelectorAll(".initialsPage");
 var userInitials = document.getElementById("userInitials");
 var scorePage = document.getElementById("scorePage");
+var answerChecked = document.querySelectorAll(".answerChecked");
+var answer = document.getElementById("answer");
 var questionPlaceHolder = document.getElementById("question");
 var choiceAPlaceHolder = document.getElementById("a-text-holder");
 var choiceBPlaceHolder = document.getElementById("b-text-holder");
@@ -130,7 +132,7 @@ startButton.addEventListener("click", startQuiz);
 
 // Display quiz contents, hide start button, start and set timer count to 100, start questions
 function startQuiz() {
-  timerCount = 10;
+  timerCount = 20;
   questionNumber = 0;
 
   displayQuizContents(true);
@@ -145,6 +147,14 @@ function displayQuizContents(boolean) {
 
   for (var i = 0; i < quizContents.length; i++) {
     quizContents[i].style.display = display;
+  }
+}
+
+function ifPreviousAnswerCorrect(boolean) {
+  var display = boolean ? "block" : "none";
+
+  for (var i = 0; i < answerChecked.length; i++) {
+    answerChecked[i].style.display = display;
   }
 }
 
@@ -183,6 +193,7 @@ submitButton.addEventListener("click", submitAnswer);
 
 // Checks to see if user's selected answer is correct
 function submitAnswer() {
+  var isCorrect = true;
   var currentQuestion = listOfQuestions[questionNumber];
   if (
     selectionA.checked &&
@@ -193,6 +204,7 @@ function submitAnswer() {
     console.log(currentQuestion.a);
     //If incorrect deduct 10 secs
     timerCount -= 10;
+    isCorrect = false;
   } else if (
     selectionB.checked &&
     currentQuestion.b !== currentQuestion.correctAnswer
@@ -201,6 +213,7 @@ function submitAnswer() {
     console.log(currentQuestion.correctAnswer);
     console.log(currentQuestion.b);
     timerCount -= 10;
+    isCorrect = false;
   } else if (
     selectionC.checked &&
     currentQuestion.c !== currentQuestion.correctAnswer
@@ -209,6 +222,7 @@ function submitAnswer() {
     console.log(currentQuestion.correctAnswer);
     console.log(currentQuestion.c);
     timerCount -= 10;
+    isCorrect = false;
   } else if (
     selectionD.checked &&
     currentQuestion.d !== currentQuestion.correctAnswer
@@ -217,6 +231,7 @@ function submitAnswer() {
     console.log(currentQuestion.correctAnswer);
     console.log(currentQuestion.d);
     timerCount -= 10;
+    isCorrect = false;
   } else if (
     // Alert if not selections are checked
     !selectionA.checked &&
@@ -227,12 +242,13 @@ function submitAnswer() {
     alert("Please select an answer.");
     return;
   }
-
+  answer.textContent = isCorrect ? "Correct" : "Incorrect";
   if (questionNumber === listOfQuestions.length - 1 || timerCount < 0) {
     clearInterval(timer);
     displayUserInitialFormPage(true);
   } else {
     // Move on to next question
+    ifPreviousAnswerCorrect(true);
     loadQuestions(questionNumber++);
   }
 }
@@ -258,6 +274,7 @@ function displayUserInitialFormPage(boolean) {
 
 function loadScorePage() {
   scorePage.style.display = "block";
+  ifPreviousAnswerCorrect(false);
 
   displayUserInitialFormPage(false);
 
