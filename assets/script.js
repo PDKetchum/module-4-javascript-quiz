@@ -202,7 +202,7 @@ function submitAnswer() {
     console.log(selectionA.checked);
     console.log(currentQuestion.correctAnswer);
     console.log(currentQuestion.a);
-    //If incorrect deduct 10 secs
+    // If incorrect deduct 10 secs
     timerCount -= 10;
     isCorrect = false;
   } else if (
