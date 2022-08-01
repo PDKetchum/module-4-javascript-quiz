@@ -19,7 +19,7 @@ The quiz includes the elements below:
 
 Selecting Answers:
 
-- Click on the radio of your answer
+- Click on the radio next to your selected answer
 - Click Submit to move on to next question/page
 
 Incorrect Answers:
