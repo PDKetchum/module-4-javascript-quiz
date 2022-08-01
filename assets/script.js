@@ -274,6 +274,7 @@ function loadScorePage() {
   }
 }
 
+// Event listener for save button
 saveButton.addEventListener("click", saveUserScore);
 
 function saveUserScore() {
