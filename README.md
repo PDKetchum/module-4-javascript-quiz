@@ -2,7 +2,7 @@
 
 ## Overview
 
-To help coding students study I created a timed scored quiz to help them gauge their knowledge on JavaScript.
+To help coding students study, I created a timed quiz to help them gauge their knowledge on JavaScript.
 
 The quiz includes the elements below:
 
@@ -17,7 +17,12 @@ The quiz includes the elements below:
 
 ## How to use:
 
-Submitting Answers:
+Selecting Answers:
+
+- Click on the radio of your answer
+- Click Submit to move on to next question/page
+
+Incorrect Answers:
 
 - If the answers are incorrect, 10 seconds are deducted from the timer
 
