@@ -8,6 +8,19 @@
     <title>JavaScript Quiz</title>
   </head>
   <body>
+    <div class="startPage buttons">
+      <div>
+        <button id="start-button" class="start-button button buttons hide">
+          Start
+        </button>
+        <h3 class="hide">Click start to begin.</h3>
+        <p class="hide">
+          You will have 100 seconds to complete the quiz. If you answer
+          incorrectly, 10 seconds will be deducted from the timer. Once the
+          timer stops, the quiz is over. Your score is the time remaining on the timer.
+        </p>
+      </div>
+    </div>
     <div class="quiz-container appear" id="quiz-container">
       <div>
         <h2 id="question">Question</h2>
@@ -32,39 +45,29 @@
           </li>
         </ul>
       </div>
+      <div class="timer appear" id="timer">
+        <h3>Time left:</h3>
+        <p id="timeLeft">100 seconds left</p>
+      </div>
+      <div>
+        <button id="submit-button" class="button buttons appear">Submit</button>
+      </div>
     </div>
     <div class="initialsPage" id="initialsPage">
+      <h2>Quiz Over!</h2>
       <p>Type your initials to save your highest score</p>
       <label for="initials">Initials:</label>
       <input type="text" id="userInitials" name="initials" placeholder="Enter Initials"></textarea>
-    </div>
-    <div class="scorePage" id="scorePage">
-      <p>Top highests scores are listed below:</p>
-      <div class="highestScores"></div>
-    </div>
-    <div class="timer appear" id="timer">
-      <h3>Time left:</h3>
-      <p id="timeLeft">100 seconds left</p>
-    </div>
-    <div class="buttons">
-      <div>
-        <button id="start-button" class="start-button button hide">
-          Start
-        </button>
-        <h3 class="hide">Click start to begin.</h3>
-        <p class="hide">
-          You will have 100 seconds to complete the quiz. If you answer
-          incorrectly, 10 seconds will be deducted from the timer. Once the
-          timer stops, the quiz is over.
-        </p>
-      </div>
-      <div>
-        <button id="submit-button" class="button appear">Submit</button>
-      </div>
       <div>
         <button id="save-button" class="button initialsPage">Save</button>
       </div>
     </div>
+    <div class="scorePage" id="scorePage">
+      <p>Top highests scores are listed below:</p>
+      <ol id="highestScoreList">
+      </ol>
+    </div>
+
   </body>
   <script src="./assets/script.js"></script>
 </html>
