@@ -1,19 +1,3 @@
-// AS A coding boot camp student
-// I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
-// SO THAT I can gauge my progress compared to my peers
-
-// GIVEN I am taking a code quiz
-// WHEN I click the start button
-// THEN a timer starts and I am presented with a question
-// WHEN I answer a question
-// THEN I am presented with another question
-// WHEN I answer a question incorrectly
-// THEN time is subtracted from the clock
-// WHEN all questions are answered or the timer reaches 0
-// THEN the game is over
-// WHEN the game is over
-// THEN I can save my initials and score
-
 // Variable to hold questions
 var listOfQuestions = [
   {
@@ -170,6 +154,7 @@ function startTimer() {
   timer = setInterval(function () {
     timerCount--;
     timerPlaceHolder.textContent = timerCount + " seconds left";
+    // If timer reaches 0 end quiz
     if (timerCount <= 0) {
       clearInterval(timer);
       displayUserInitialFormPage(true);
@@ -189,6 +174,7 @@ function loadQuestions() {
   choiceDPlaceHolder.textContent = currentQuestion.d;
 }
 
+// Event listener for submit button
 submitButton.addEventListener("click", submitAnswer);
 
 // Checks to see if user's selected answer is correct
@@ -196,40 +182,30 @@ function submitAnswer() {
   var isCorrect = true;
   var currentQuestion = listOfQuestions[questionNumber];
   if (
+    // If selection 'A' is checked by user
     selectionA.checked &&
+    // Contents do not match correct answer contents
     currentQuestion.a !== currentQuestion.correctAnswer
   ) {
-    console.log(selectionA.checked);
-    console.log(currentQuestion.correctAnswer);
-    console.log(currentQuestion.a);
-    // If incorrect deduct 10 secs
+    // Deduct 10 secs, show incorrect in next screen
     timerCount -= 10;
     isCorrect = false;
   } else if (
     selectionB.checked &&
     currentQuestion.b !== currentQuestion.correctAnswer
   ) {
-    console.log(selectionB.checked);
-    console.log(currentQuestion.correctAnswer);
-    console.log(currentQuestion.b);
     timerCount -= 10;
     isCorrect = false;
   } else if (
     selectionC.checked &&
     currentQuestion.c !== currentQuestion.correctAnswer
   ) {
-    console.log(selectionC.checked);
-    console.log(currentQuestion.correctAnswer);
-    console.log(currentQuestion.c);
     timerCount -= 10;
     isCorrect = false;
   } else if (
     selectionD.checked &&
     currentQuestion.d !== currentQuestion.correctAnswer
   ) {
-    console.log(selectionD.checked);
-    console.log(currentQuestion.correctAnswer);
-    console.log(currentQuestion.d);
     timerCount -= 10;
     isCorrect = false;
   } else if (
@@ -269,14 +245,14 @@ function displayUserInitialFormPage(boolean) {
   for (var i = 0; i < initialsPage.length; i++) {
     initialsPage[i].style.display = display;
   }
-
+  // Hides contents
   displayQuizContents(false);
 }
 
 function loadScorePage() {
+  // Hides contents
   scorePage.style.display = "block";
   ifPreviousAnswerCorrect(false);
-
   displayUserInitialFormPage(false);
 
   // Sort user score highest to lowest
@@ -305,6 +281,7 @@ function saveUserScore() {
   if (timerCount < 0) {
     timerCount = 0;
   }
+  // Alerts user to enter initials
   if (!userInitials.value) {
     alert("Please enter in your initials.");
     return;
