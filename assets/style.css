@@ -4,8 +4,6 @@
   --dark: #4d1f54;
   --neutral: #bea9c2;
   --border: solid var(--dark) 8px;
-  --correct: #c3e19d;
-  --inccorect: #e19d9d;
   font-family: "Courier New", Courier, monospace;
 }
 
@@ -21,7 +19,11 @@ body {
   max-width: 80%;
 }
 
-.question {
+.question,
+p,
+h2,
+h3,
+label {
   padding: 15px;
 }
 
@@ -46,6 +48,7 @@ button {
 
 .initialsPage {
   display: none;
+  padding: 15px;
 }
 
 .scorePage {
@@ -56,8 +59,8 @@ button {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 40px;
   flex-direction: column;
+  padding: 40px;
 }
 
 .timer {
